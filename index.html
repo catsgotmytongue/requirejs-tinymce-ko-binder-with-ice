@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <script src="require-config.js"></script>
+    <script data-main="main.js" src="require.js"></script>
+    <script>
+      require(['jquery', 'knockout','tinymce','tinymce.jquery','tinymceKoHandler'], function($, ko){
+        try {
+          console.log(typeof($));
+          console.log(typeof(ko));
+
+          var vm = {
+            text: ko.observable("hello"),
+            text2: ko.observable("a second example...")
+          };
+
+          ko.applyBindings(vm);
+
+        }
+        catch(error) {
+          console.log("error:"+error.message); 
+        }
+        
+      });
+
+    </script>
+    <link rel="stylesheet" href="style.css" />
+
+  </head>
+
+  <body>
+    <input type="text" data-bind="value: $root.text" />
+    <textarea class="tinymce" data-bind="tinymce: $root.text">
+      Something in it
+    </textarea>
+    <span data-bind="text: $root.text"></span>
+
+    <div data-bind="tinymce: $root.text2, tinymceOptions: { inline: true}"></div>
+  </body>
+
+</html>
