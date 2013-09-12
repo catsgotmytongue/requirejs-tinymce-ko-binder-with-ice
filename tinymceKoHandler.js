@@ -1,6 +1,6 @@
 define(
 	'tinymceKoHandler',
-	['knockout','jquery','tinymce','ice','icePluginManager','rangy'], 
+	['knockout','jquery','tinymce'], 
 	function(ko, $, tinymce) {
 
 
@@ -14,7 +14,7 @@ ko.bindingHandlers.tinymce = {
 				    plugins: [
 				        "advlist autolink lists link image charmap print preview anchor",
 				        "searchreplace visualblocks code fullscreen",
-				        "insertdatetime media table contextmenu paste ice icesearchreplace"
+				        "insertdatetime media table contextmenu paste"
 				    ],
     				toolbar: "fullscreen insertfile undo redo | styleselect| bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | inserttime charmap|ice_togglechanges ice_toggleshowchanges iceacceptall icerejectall iceaccept icereject",
 					setup: function (ed) {
@@ -25,12 +25,6 @@ ko.bindingHandlers.tinymce = {
 						});
 
                     },
-                    ice: {
-						user: { name: 'Geoffrey Jellineck', id: 11},
-						preserveOnPaste: 'p,a[href],i,em,b,span',
-						deleteTag: 'delete',
-						insertTag: 'insert'
-					}
         };
 		
 		config = $.extend(config, options);
